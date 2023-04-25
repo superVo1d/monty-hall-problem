@@ -2,7 +2,11 @@
   <div :class="classes" @click="isActive = !isActive">
     <div :class="`${cardsItemClassName}__inner`">
       <parallax-item :active="!isActive">
-        <div :class="`${cardsItemClassName}__content`" />
+        <div :class="`${cardsItemClassName}__content`">
+          <div :class="`${cardsItemClassName}__text`">
+            <span>?</span>
+          </div>
+        </div>
       </parallax-item>
     </div>
   </div>
@@ -41,10 +45,31 @@ const classes = computed(() => [
   }
 
   &__content {
-    width: 15rem;
-    background: red;
+    width: 20rem;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 3rem 6rem 0;
+    border-radius: 1rem;
+    border: 1px solid #f3f3f3;
     aspect-ratio: 3 / 4;
+    position: relative;
+    z-index: 1;
     transform-style: preserve-3d;
+  }
+
+  &__text {
+    color: #c2c2c2;
+    font-size: 17rem;
+    line-height: 17rem;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
   }
 
   &_active {

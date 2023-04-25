@@ -19,8 +19,8 @@ const count = 3;
 .cards {
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 2rem;
   justify-content: center;
-  margin: 10px;
+  margin: 5rem;
 }
 </style>

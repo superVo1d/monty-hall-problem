@@ -1,0 +1,17 @@
+@import 'src/assets/styles/mixins';
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pseudo {
+  border-bottom: 1px dotted;
+  cursor: pointer;
+}
+
+a,
+.pseudo {
+  @include hover;
+}
