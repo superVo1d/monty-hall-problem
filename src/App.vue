@@ -1,26 +1,57 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main>
+    <cards />
+    <Button title="Большая кнопка" :type="ButtonType.primary" @click="log" />
+  </main>
+  <Footer />
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import Button from "./components/Button.vue";
+import { ButtonType } from "@/types";
+import ParallaxWrapper from "@/wrappers/ParallaxWrapper.vue";
+import Cards from "@/components/Cards.vue";
+import CardsItem from "@/components/CardsItem.vue";
+import "./assets/styles/main.scss";
+import Footer from "@/components/Footer.vue";
 
-export default {
-  name: 'App',
+@Options({
   components: {
-    HelloWorld
-  }
-}
+    Footer,
+    ParallaxWrapper,
+    Button,
+    Cards,
+    CardsItem,
+  },
+  data() {
+    return {
+      ButtonType,
+    };
+  },
+  methods: {
+    log() {
+      console.log("click from App");
+    },
+  },
+})
+export default class App extends Vue {}
 </script>
 
-<style>
+<style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  main {
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 </style>
