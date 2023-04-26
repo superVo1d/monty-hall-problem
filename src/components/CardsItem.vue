@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes" @click="isActive = !isActive">
+  <div :class="classes" @click="props.onClick">
     <div :class="`${cardsItemClassName}__inner`">
-      <parallax-item :active="!isActive">
+      <parallax-item :active="!props.active">
         <div :class="`${cardsItemClassName}__content`">
           <div :class="`${cardsItemClassName}__text`">
             <span>?</span>
@@ -13,17 +13,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import ParallaxItem from "@/wrappers/ParallaxWrapper.vue";
 
 const cardsItemClassName = "cards-item";
 
-const isActive = ref<boolean>(false);
+interface CardsItemInterface {
+  active: boolean;
+  onClick: () => void;
+}
+
+const props = defineProps<CardsItemInterface>();
 
 const classes = computed(() => [
   cardsItemClassName,
   {
-    [`${cardsItemClassName}_active`]: isActive.value,
+    [`${cardsItemClassName}_active`]: props.active,
   },
 ]);
 </script>
@@ -47,7 +52,7 @@ const classes = computed(() => [
   &__content {
     width: 20rem;
     background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 3rem 6rem 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 3rem 6rem 0;
     border-radius: 1rem;
     border: 1px solid #f3f3f3;
     aspect-ratio: 3 / 4;
@@ -74,8 +79,11 @@ const classes = computed(() => [
 
   &_active {
     #{$selector}__inner {
-      transform: rotateY(180deg);
+      transform: rotateY(360deg);
       opacity: 0;
+    }
+    #{$selector}__content {
+      box-shadow: none;
     }
   }
 }
