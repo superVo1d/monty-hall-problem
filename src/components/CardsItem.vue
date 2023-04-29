@@ -8,12 +8,14 @@
           </div>
         </div>
       </parallax-item>
+      <goat-scene :class="`${cardsItemClassName}__scene`" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
+import GoatScene from "@/components/GoatScene.vue";
 import ParallaxItem from "@/wrappers/ParallaxWrapper.vue";
 
 const cardsItemClassName = "cards-item";
@@ -44,9 +46,11 @@ const classes = computed(() => [
   &__inner {
     width: 100%;
     height: 100%;
-    transition: all 0.6s;
     transform-style: preserve-3d;
-    opacity: 1;
+
+    & > div {
+      position: relative;
+    }
   }
 
   &__content {
@@ -59,6 +63,7 @@ const classes = computed(() => [
     position: relative;
     z-index: 1;
     transform-style: preserve-3d;
+    transition: all 0.6s;
   }
 
   &__text {
@@ -77,12 +82,18 @@ const classes = computed(() => [
     z-index: 1;
   }
 
+  &__scene {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
   &_active {
-    #{$selector}__inner {
+    #{$selector}__content {
       transform: rotateY(360deg);
       opacity: 0;
-    }
-    #{$selector}__content {
       box-shadow: none;
     }
   }

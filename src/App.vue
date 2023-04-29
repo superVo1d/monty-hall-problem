@@ -1,7 +1,8 @@
 <template>
   <main>
-    <cards />
-    <Button title="Большая кнопка" :type="ButtonType.primary" @click="log" />
+    <parallax-wrapper threshold="-30">
+      <goat-scene class="goat" />
+    </parallax-wrapper>
   </main>
   <Footer />
 </template>
@@ -15,9 +16,11 @@ import Cards from "@/components/Cards.vue";
 import CardsItem from "@/components/CardsItem.vue";
 import "./assets/styles/main.scss";
 import Footer from "@/components/Footer.vue";
+import GoatScene from "@/components/GoatScene.vue";
 
 @Options({
   components: {
+    GoatScene,
     Footer,
     ParallaxWrapper,
     Button,
