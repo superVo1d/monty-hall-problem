@@ -1,8 +1,6 @@
 <template>
   <main>
-    <parallax-wrapper threshold="-30">
-      <goat-scene class="goat" />
-    </parallax-wrapper>
+    <goat-scene class="goat" />
   </main>
   <Footer />
 </template>
@@ -55,6 +53,8 @@ export default class App extends Vue {}
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    width: 100%;
   }
 }
 </style>

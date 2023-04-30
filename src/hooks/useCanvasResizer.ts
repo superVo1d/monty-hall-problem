@@ -5,17 +5,23 @@ import { MaybeRef } from "@/types";
 
 export const useCanvasResizer = (args: {
   camera: MaybeRef<PerspectiveCamera>;
+  container?: MaybeRef<HTMLDivElement>;
   onResize?: () => void;
   renderer: MaybeRef<WebGLRenderer>;
 }) => {
+  const container = ref<MaybeRef<HTMLDivElement>>(args.container);
   const camera = ref<MaybeRef<PerspectiveCamera>>(args.camera);
   const renderer = ref<MaybeRef<WebGLRenderer>>(args.renderer);
 
   const setSize = () => {
+    console.log("set size");
     if (camera.value && renderer.value) {
-      camera.value.aspect = window.innerWidth / window.innerHeight;
+      const [height, width] = container.value
+        ? [container.value.clientHeight, container.value.clientWidth]
+        : [window.innerHeight, window.innerWidth];
+      camera.value.aspect = width / height;
       camera.value.updateProjectionMatrix();
-      renderer.value.setSize(window.innerWidth, window.innerHeight);
+      renderer.value.setSize(width, height);
       renderer.value.setPixelRatio(window.devicePixelRatio);
     }
 

@@ -1,5 +1,7 @@
 <template>
-  <canvas ref="canvas" />
+  <div ref="container">
+    <canvas ref="canvas" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +28,7 @@ import { useAnimationLoop, useCanvasResizer } from "@/hooks";
 
 const camera = ref<PerspectiveCamera>();
 const canvas = ref<HTMLCanvasElement>();
+const container = ref<HTMLDivElement>();
 const controls = ref<OrbitControls>();
 const light = ref<Light>();
 const mixer = ref<AnimationMixer>();
@@ -35,6 +38,7 @@ const scene = ref<Scene>();
 
 useCanvasResizer({
   camera,
+  container,
   onResize: () => {
     controls?.value?.update();
   },
@@ -57,7 +61,15 @@ onMounted(() => {
   scene.value.add(light.value);
   scene.value.add(axes);
 
-  renderer.value.setSize(window.innerWidth, window.innerHeight);
+  console.log(container?.value);
+
+  const [height, width] = [
+    container?.value?.clientHeight || 0,
+    container?.value?.clientWidth || 0,
+  ];
+
+  renderer.value.setSize(width, height);
+
   renderer.value.render(_scene, _camera);
 
   controls.value.update();
@@ -86,7 +98,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
+div {
+  width: 100%;
+  height: 100%;
+}
+
 canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
