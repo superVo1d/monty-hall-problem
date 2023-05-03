@@ -1,3 +1,4 @@
+export * from "./animate";
 export * from "./createCamera";
 export * from "./createControls";
 export * from "./createScene";

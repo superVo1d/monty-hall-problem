@@ -13,6 +13,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/preset-typescript": "^3.0.0",
+    "@tweenjs/tween.js": "^20.0.3",
     "@types/three": "^0.150.2",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vueuse/motion": "^2.0.0-beta.12",

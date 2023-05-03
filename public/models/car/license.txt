@@ -1,0 +1,11 @@
+Model Information:
+* title:	TOON Japan : Mazda MX5 Miata
+* source:	https://sketchfab.com/3d-models/toon-japan-mazda-mx5-miata-60d1e139e73e4f00bdaebf394cc0f6ad
+* author:	LePoint_BAT (https://sketchfab.com/LePointBAT)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "TOON Japan : Mazda MX5 Miata" (https://sketchfab.com/3d-models/toon-japan-mazda-mx5-miata-60d1e139e73e4f00bdaebf394cc0f6ad) by LePoint_BAT (https://sketchfab.com/LePointBAT) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

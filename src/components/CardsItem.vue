@@ -8,14 +8,19 @@
           </div>
         </div>
       </parallax-item>
-      <goat-scene :class="`${cardsItemClassName}__scene`" />
+      <scene
+        v-if="props.active"
+        :class="`${cardsItemClassName}__scene`"
+        :type="props.prize ? SceneType.car : SceneType.goat"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-import GoatScene from "@/components/GoatScene.vue";
+import Scene from "@/components/Scene.vue";
+import { SceneType } from "@/types";
 import ParallaxItem from "@/wrappers/ParallaxWrapper.vue";
 
 const cardsItemClassName = "cards-item";
@@ -23,6 +28,7 @@ const cardsItemClassName = "cards-item";
 interface CardsItemInterface {
   active: boolean;
   onClick: () => void;
+  prize: boolean;
 }
 
 const props = defineProps<CardsItemInterface>();
@@ -39,16 +45,16 @@ const classes = computed(() => [
 .cards-item {
   $selector: &;
 
-  -webkit-perspective: 150rem;
+  -webkit-perspective: 300rem;
   cursor: pointer;
-  perspective: 150rem;
+  perspective: 300rem;
 
   &__inner {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
 
-    & > div {
+    & > div:first-child {
       position: relative;
     }
   }
@@ -56,9 +62,8 @@ const classes = computed(() => [
   &__content {
     width: 20rem;
     background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 3rem 6rem 0;
     border-radius: 1rem;
-    border: 1px solid #f3f3f3;
+    border: 1px solid #c2c2c2;
     aspect-ratio: 3 / 4;
     position: relative;
     z-index: 1;

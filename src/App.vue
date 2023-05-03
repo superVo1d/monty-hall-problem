@@ -1,42 +1,16 @@
 <template>
   <main>
-    <goat-scene class="goat" />
+    <cards />
   </main>
   <Footer />
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import Button from "./components/Button.vue";
-import { ButtonType } from "@/types";
-import ParallaxWrapper from "@/wrappers/ParallaxWrapper.vue";
+<script setup lang="ts">
 import Cards from "@/components/Cards.vue";
-import CardsItem from "@/components/CardsItem.vue";
 import "./assets/styles/main.scss";
 import Footer from "@/components/Footer.vue";
-import GoatScene from "@/components/GoatScene.vue";
 
-@Options({
-  components: {
-    GoatScene,
-    Footer,
-    ParallaxWrapper,
-    Button,
-    Cards,
-    CardsItem,
-  },
-  data() {
-    return {
-      ButtonType,
-    };
-  },
-  methods: {
-    log() {
-      console.log("click from App");
-    },
-  },
-})
-export default class App extends Vue {}
+const log = () => console.log("click from App");
 </script>
 
 <style lang="scss">

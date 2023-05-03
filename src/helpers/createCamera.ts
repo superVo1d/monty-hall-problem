@@ -9,6 +9,7 @@ export const createCamera = () => {
   );
 
   camera.position.set(1, 1, 1);
+  camera.lookAt(0, 0, 0);
 
   return camera;
 };
