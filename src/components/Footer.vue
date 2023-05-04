@@ -17,7 +17,6 @@ const classes = computed(() => [footerClassName]);
 
 <style scoped lang="scss">
 .footer {
-  text-align: center;
-  padding: 3rem 0;
+  margin-top: 4.8rem;
 }
 </style>

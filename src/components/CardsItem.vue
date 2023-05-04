@@ -42,11 +42,15 @@ const classes = computed(() => [
 </script>
 
 <style lang="scss" scoped>
+@use "src/assets/styles/variables/colors";
+
 .cards-item {
   $selector: &;
 
   -webkit-perspective: 300rem;
   cursor: pointer;
+  flex-grow: 1;
+  max-width: calc(25% - 3rem);
   perspective: 300rem;
 
   &__inner {
@@ -60,10 +64,8 @@ const classes = computed(() => [
   }
 
   &__content {
-    width: 20rem;
-    background: #fff;
-    border-radius: 1rem;
-    border: 1px solid #c2c2c2;
+    width: 100%;
+    border: 1px solid #000;
     aspect-ratio: 3 / 4;
     position: relative;
     z-index: 1;
@@ -72,9 +74,9 @@ const classes = computed(() => [
   }
 
   &__text {
-    color: #c2c2c2;
-    font-size: 17rem;
-    line-height: 17rem;
+    color: colors.$spring-bud;
+    font-size: 13vw;
+    line-height: 13vw;
     position: absolute;
     height: 100%;
     width: 100%;

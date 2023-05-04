@@ -138,6 +138,10 @@ onMounted(() => {
 
   loader.load(url, (gltf) => {
     gltf.scene.position.y = -0.2;
+    if (props.type === SceneType.goat) {
+      gltf.scene.scale.set(1.3, 1.3, 1.3);
+      gltf.scene.position.y = -0.3;
+    }
     model.value = gltf;
     _scene.add(gltf.scene);
 

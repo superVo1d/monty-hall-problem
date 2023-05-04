@@ -36,7 +36,6 @@ const classes = computed(() => [cardsClassName]);
   width: 100%;
   display: flex;
   gap: 2rem;
-  justify-content: center;
-  margin: 5rem;
+  margin: 4.8rem 0;
 }
 </style>
