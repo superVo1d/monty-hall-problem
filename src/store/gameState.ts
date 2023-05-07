@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 import { GameState } from "./constants";
 
 interface GameStateInterface {
@@ -28,10 +29,14 @@ const initializeState: (previousState?: any) => GameStateInterface = (
     gameState: GameState.pick,
     pickedDoor: null,
     prizeDoor,
-    totalSwitchPlays: previousState?.totalSwitchPlays || 0,
-    totalStayPlays: previousState?.totalStayPlays || 0,
-    totalSwitchWins: previousState?.totalSwitchWins || 0,
-    totalStayWins: previousState?.totalStayWins || 0,
+    totalSwitchPlays:
+      previousState?.totalSwitchPlays || useStorage("totalSwitchPlays", 0),
+    totalStayPlays:
+      previousState?.totalStayPlays || useStorage("totalStayPlays", 0),
+    totalSwitchWins:
+      previousState?.totalSwitchWins || useStorage("totalSwitchWins", 0),
+    totalStayWins:
+      previousState?.totalStayWins || useStorage("totalStayWins", 0),
     win: false,
   };
 };
