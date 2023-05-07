@@ -1,24 +1,8 @@
-# vue-test
+# 🚪 Monty Hall Problem
 
-## Project setup
-```
-npm install
-```
+Visualisation of [Monty Hall Problem](https://en.wikipedia.org/wiki/Monty_Hall_problem)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+https://supervo1d.github.io/monty-hall-problem/
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Play now:
+https://supervo1d.github.io/monty-hall-problem/
