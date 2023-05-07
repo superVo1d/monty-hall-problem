@@ -1,5 +1,5 @@
 <template>
-  <div :class="layoutClassName">
+  <div :class="classNames">
     <div>
       <Header />
       <main>
@@ -20,11 +20,28 @@ import Footer from "@/components/Footer.vue";
 import Header from "@/components/Header.vue";
 import Stats from "@/components/Stats.vue";
 import Log from "@/components/Log.vue";
+import { useGameStateStore } from "@/store/gameState";
+import { GameState } from "@/store/constants";
+import { computed } from "vue";
+
+const state = useGameStateStore();
 
 const layoutClassName = "layout";
+
+const classNames = computed(() => [
+  layoutClassName,
+  {
+    [`${layoutClassName}_win`]:
+      state.gameState === GameState.gameOver && state.win,
+    [`${layoutClassName}_loose`]:
+      state.gameState === GameState.gameOver && !state.win,
+  },
+]);
 </script>
 
 <style scoped lang="scss">
+@use "src/assets/styles/variables/colors";
+
 .layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -41,6 +58,14 @@ const layoutClassName = "layout";
       flex-direction: column;
       justify-content: space-between;
     }
+  }
+
+  &_win {
+    background: colors.$spring-bud;
+  }
+
+  &_loose {
+    background: colors.$coral-orange;
   }
 }
 </style>

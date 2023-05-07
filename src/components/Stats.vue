@@ -3,29 +3,42 @@
     <ul>
       <li v-for="({ label, value }, index) in statsData" :key="index">
         <div>{{ label }}</div>
-        <div>{{ value }}</div>
+        <div>{{ formatFloat(value) }}</div>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { formatFloat } from "@/helpers";
+
 const statsClassName = "stats";
 
-const statsData: { label: string; value: number }[] = [
-  {
-    label: "Try:",
-    value: 12,
-  },
-  {
-    label: "Won after switch ratio:",
-    value: 60.3333,
-  },
-  {
-    label: "Won with no switch ratio:",
-    value: 29.6666,
-  },
-];
+import { useGameStateStore } from "@/store/gameState";
+
+const state = useGameStateStore();
+
+const statsData = computed(() => {
+  const value = [
+    {
+      label: "Try:",
+      value: state.getTotalsPlays,
+    },
+    {
+      label: "Won after switch:",
+      value: state.totalSwitchWins / state.totalSwitchPlays,
+    },
+    {
+      label: "Won after stay:",
+      value: state.totalStayWins / state.totalStayPlays,
+    },
+  ];
+
+  console.log(value);
+
+  return value;
+});
 </script>
 
 <style scoped lang="scss">

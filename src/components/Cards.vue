@@ -1,32 +1,24 @@
 <template>
   <div :class="classes">
     <cards-item
-      v-for="(item, index) in cardsState"
+      v-for="(item, index) in state.doorsState"
       :key="index"
       :active="item"
-      :on-click="() => changeState(index)"
-      :prize="index === prizeIndex"
+      :on-click="() => state.pickDoor(index)"
+      :picked="index === state.pickedDoor"
+      :prize="index === state.prizeDoor"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import CardsItem from "@/components/CardsItem.vue";
-import { useMemoryRef } from "@/hooks/useMemoryRef";
+import { useGameStateStore } from "@/store/gameState";
+
+const state = useGameStateStore();
 
 const cardsClassName = "cards";
-
-const count = 3;
-
-const prizeIndex = computed(() => Math.floor((Math.random() * count) % count));
-
-//const cardsState = useMemoryRef(cardsClassName, new Array(count).fill(false));
-const cardsState = ref(new Array(count).fill(false));
-
-const changeState = (index: number) => {
-  cardsState.value[index] = !cardsState.value[index];
-};
 
 const classes = computed(() => [cardsClassName]);
 </script>

@@ -1,14 +1,54 @@
 <template>
   <div :class="logClassName">
-    <div>M: «Choose a prize door.»</div>
-    <div>P: Picked the door No. 2</div>
-    <div>M: «Do you want to pick door No. 1?»</div>
-    <div>P: Yes/No [Y/N]</div>
+    <div v-for="(log, index) in logs" :key="index" v-html="log" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useGameStateStore } from "@/store/gameState";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
+import { GameState } from "@/store/constants";
+
 const logClassName = "log";
+
+const state = useGameStateStore();
+
+const { gameState, pickedDoor, doorsState, win } = storeToRefs(state);
+
+const logs = computed(() => {
+  const result = [];
+
+  switch (gameState.value) {
+    case GameState.pick: {
+      result.push("Choose a prize door.");
+
+      break;
+    }
+    case GameState.reveal: {
+      let anotherDoor = 0;
+
+      doorsState.value.forEach((item, index) => {
+        if (index !== pickedDoor.value && !doorsState.value[index]) {
+          anotherDoor = index;
+        }
+      });
+      result.push(
+        `You picked the door No. ${pickedDoor.value && pickedDoor.value + 1}`
+      );
+      result.push(`Do you want to pick door No. ${anotherDoor + 1}?`);
+
+      break;
+    }
+    case GameState.gameOver: {
+      result.push(win ? "You Win! Try again." : "You Loose! Try again.");
+
+      break;
+    }
+  }
+
+  return result;
+});
 </script>
 
 <style scoped lang="scss">

@@ -28,6 +28,7 @@ const cardsItemClassName = "cards-item";
 interface CardsItemInterface {
   active: boolean;
   onClick: () => void;
+  picked: boolean;
   prize: boolean;
 }
 
@@ -37,6 +38,7 @@ const classes = computed(() => [
   cardsItemClassName,
   {
     [`${cardsItemClassName}_active`]: props.active,
+    [`${cardsItemClassName}_picked`]: props.picked,
   },
 ]);
 </script>
@@ -57,6 +59,7 @@ const classes = computed(() => [
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
+    pointer-events: none;
 
     & > div:first-child {
       position: relative;
@@ -70,7 +73,7 @@ const classes = computed(() => [
     position: relative;
     z-index: 1;
     transform-style: preserve-3d;
-    transition: all 0.6s;
+    transition: transform 0.6s ease, opacity 0.6s ease;
   }
 
   &__text {
@@ -101,7 +104,23 @@ const classes = computed(() => [
     #{$selector}__content {
       transform: rotateY(360deg);
       opacity: 0;
+      border: none;
       box-shadow: none;
+    }
+  }
+
+  &:hover:not(#{$selector}_active):not(#{$selector}_picked) {
+    @media (hover: hover) {
+      #{$selector}__content {
+        border: 10px dashed colors.$spring-bud;
+      }
+    }
+  }
+
+  &_picked {
+    #{$selector}__content {
+      border: 10px solid colors.$spring-bud;
+      width: 100%;
     }
   }
 }
