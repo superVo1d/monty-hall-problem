@@ -40,6 +40,7 @@ const classNames = computed(() => [
 </script>
 
 <style scoped lang="scss">
+@use "src/assets/styles/variables/breakpoints";
 @use "src/assets/styles/variables/colors";
 
 .layout {
@@ -47,6 +48,10 @@ const classNames = computed(() => [
   grid-template-columns: 3fr 1fr;
   height: 100%;
   width: 100%;
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
 
   & > div {
     height: 100%;
@@ -57,6 +62,11 @@ const classNames = computed(() => [
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      @media (max-width: breakpoints.$breakpoint-sm) {
+        border-left: none;
+        border-top: 1px solid #000;
+      }
     }
   }
 

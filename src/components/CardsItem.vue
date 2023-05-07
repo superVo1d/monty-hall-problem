@@ -44,6 +44,7 @@ const classes = computed(() => [
 </script>
 
 <style lang="scss" scoped>
+@use "src/assets/styles/variables/breakpoints";
 @use "src/assets/styles/variables/colors";
 
 .cards-item {
@@ -54,6 +55,10 @@ const classes = computed(() => [
   flex-grow: 1;
   max-width: calc(25% - 3rem);
   perspective: 300rem;
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    max-width: unset;
+  }
 
   &__inner {
     width: 100%;
@@ -112,14 +117,16 @@ const classes = computed(() => [
   &:hover:not(#{$selector}_active):not(#{$selector}_picked) {
     @media (hover: hover) {
       #{$selector}__content {
-        border: 10px dashed colors.$spring-bud;
+        border-color: transparent;
+        outline: max(1vw, 5px) dashed colors.$spring-bud;
       }
     }
   }
 
   &_picked {
     #{$selector}__content {
-      border: 10px solid colors.$spring-bud;
+      border-color: transparent;
+      outline: max(1vw, 5px) solid colors.$spring-bud;
       width: 100%;
     }
   }
