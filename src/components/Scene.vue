@@ -17,6 +17,9 @@ import {
 import * as TWEEN from "@tweenjs/tween.js";
 import { onMounted, ref } from "vue";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import CarModel from "/models/car/scene.gltf";
+import GoatModel from "/models/goat/scene.gltf";
+
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import {
   animate,
@@ -44,9 +47,13 @@ interface SceneInterface {
 
 const props = defineProps<SceneInterface>();
 
+const isProdPath =
+  // eslint-disable-next-line
+  process.env.NODE_ENV === "production" ? "/monty-hall-problem" : "";
+
 const url = {
-  [SceneType.car]: "/models/car/scene.gltf",
-  [SceneType.goat]: "/models/goat/scene.gltf",
+  [SceneType.car]: `${isProdPath}/models/car/scene.gltf`,
+  [SceneType.goat]: `${isProdPath}/models/goat/scene.gltf`,
 }[props.type];
 
 useCanvasResizer({
