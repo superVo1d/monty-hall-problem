@@ -17,9 +17,6 @@ import {
 import * as TWEEN from "@tweenjs/tween.js";
 import { onMounted, ref } from "vue";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import CarModel from "/models/car/scene.gltf";
-import GoatModel from "/models/goat/scene.gltf";
-
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import {
   animate,

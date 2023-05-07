@@ -50,7 +50,7 @@ const classNames = computed(() => [
   width: 100%;
 
   @media (max-width: breakpoints.$breakpoint-sm) {
-    grid-template-columns: 1fr;
+    display: block;
   }
 
   & > div {

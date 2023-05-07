@@ -19,26 +19,20 @@ import { useGameStateStore } from "@/store/gameState";
 
 const state = useGameStateStore();
 
-const statsData = computed(() => {
-  const value = [
-    {
-      label: "Try:",
-      value: state.getTotalsPlays,
-    },
-    {
-      label: "Won after switch:",
-      value: state.totalSwitchWins / state.totalSwitchPlays,
-    },
-    {
-      label: "Won after stay:",
-      value: state.totalStayWins / state.totalStayPlays,
-    },
-  ];
-
-  console.log(value);
-
-  return value;
-});
+const statsData = computed(() => [
+  {
+    label: "Try:",
+    value: state.getTotalsPlays,
+  },
+  {
+    label: "Won after switch:",
+    value: state.totalSwitchWins / state.totalSwitchPlays,
+  },
+  {
+    label: "Won after stay:",
+    value: state.totalStayWins / state.totalStayPlays,
+  },
+]);
 </script>
 
 <style scoped lang="scss">

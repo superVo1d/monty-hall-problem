@@ -118,7 +118,7 @@ const classes = computed(() => [
     @media (hover: hover) {
       #{$selector}__content {
         border-color: transparent;
-        outline: max(1vw, 5px) dashed colors.$spring-bud;
+        outline: max(0.5vw, 5px) dashed colors.$spring-bud;
       }
     }
   }
@@ -126,7 +126,7 @@ const classes = computed(() => [
   &_picked {
     #{$selector}__content {
       border-color: transparent;
-      outline: max(1vw, 5px) solid colors.$spring-bud;
+      outline: max(0.5vw, 5px) solid colors.$spring-bud;
       width: 100%;
     }
   }
