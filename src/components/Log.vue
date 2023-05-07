@@ -50,9 +50,16 @@ const logs = computed(() => {
 </script>
 
 <style scoped lang="scss">
+@use "src/assets/styles/variables/breakpoints";
+
 .log {
   font-size: 3.6rem;
   line-height: 4rem;
   font-weight: 700;
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
 }
 </style>

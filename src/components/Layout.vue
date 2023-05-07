@@ -46,7 +46,7 @@ const classNames = computed(() => [
 .layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 
   @media (max-width: breakpoints.$breakpoint-sm) {
@@ -56,6 +56,10 @@ const classNames = computed(() => [
   & > div {
     height: 100%;
     padding: 3.2rem 1.6rem 4.8rem;
+
+    &:first-child {
+      min-height: 80vh;
+    }
 
     &:last-child {
       border-left: 1px solid #000;

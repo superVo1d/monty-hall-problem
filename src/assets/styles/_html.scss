@@ -1,3 +1,4 @@
+@use 'src/assets/styles/variables/breakpoints';
 @use 'src/assets/styles/variables/colors';
 
 html {
@@ -21,6 +22,11 @@ body {
   line-height: 2.4rem;
   overflow-x: hidden;
   padding-right: var(--padding-right);
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+  }
 }
 
 h1 {
@@ -28,6 +34,11 @@ h1 {
   line-height: 5.6rem;
   font-weight: 900;
   margin-bottom: 0.8rem;
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    font-size: 3.2rem;
+    line-height: 4rem;
+  }
 }
 
 img {
