@@ -33,9 +33,7 @@ const logs = computed(() => {
           anotherDoor = index;
         }
       });
-      result.push(
-        `You picked the door No. ${pickedDoor.value && pickedDoor.value + 1}`
-      );
+      result.push(`You picked the door No. ${(pickedDoor.value || 0) + 1}`);
       result.push(`Do you want to pick door No. ${anotherDoor + 1}?`);
 
       break;
