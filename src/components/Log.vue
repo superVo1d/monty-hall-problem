@@ -41,7 +41,7 @@ const logs = computed(() => {
       break;
     }
     case GameState.gameOver: {
-      result.push(win ? "You Win! Try again." : "You Loose! Try again.");
+      result.push(win.value ? "You Win! Try again." : "You Loose! Try again.");
 
       break;
     }
