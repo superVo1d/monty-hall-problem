@@ -36,9 +36,16 @@ const statsData = computed(() => [
 </script>
 
 <style scoped lang="scss">
+@use "src/assets/styles/variables/breakpoints";
+
 .stats {
   font-size: 3.6rem;
   line-height: 4rem;
+
+  @media (max-width: breakpoints.$breakpoint-sm) {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
 
   li,
   ul {

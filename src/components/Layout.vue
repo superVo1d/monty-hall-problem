@@ -47,6 +47,7 @@ const classNames = computed(() => [
   display: grid;
   grid-template-columns: 3fr 1fr;
   min-height: 100%;
+  transition: background 0.6s ease;
   width: 100%;
 
   @media (max-width: breakpoints.$breakpoint-sm) {

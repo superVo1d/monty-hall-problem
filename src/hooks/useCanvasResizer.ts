@@ -14,7 +14,6 @@ export const useCanvasResizer = (args: {
   const renderer = ref<MaybeRef<WebGLRenderer>>(args.renderer);
 
   const setSize = () => {
-    console.log("set size");
     if (camera.value && renderer.value) {
       const [height, width] = container.value
         ? [container.value.clientHeight, container.value.clientWidth]
