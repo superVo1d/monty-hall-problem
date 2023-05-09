@@ -112,6 +112,7 @@ const classes = computed(() => [
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
     z-index: 1;
 
     @media (max-width: breakpoints.$breakpoint-sm) {
