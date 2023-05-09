@@ -86,11 +86,13 @@ const classes = computed(() => [
   &__content {
     width: 100%;
     border: 1px solid #000;
-    aspect-ratio: 3 / 4;
+    padding-top: 133.3333%;
+    height: 0;
     position: relative;
-    z-index: 1;
+    overflow: hidden;
     transform-style: preserve-3d;
     transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 1;
   }
 
   &__parallax-item-wrapper {
