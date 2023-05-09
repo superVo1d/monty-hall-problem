@@ -36,7 +36,7 @@ onMounted(() => {
         models.value[modelType] = gltf;
       });
     });
-  });
+  }, 100000);
 });
 
 provide<ModelProviderInjectionInterface>(modelInjectionKey, {

@@ -1,7 +1,7 @@
 <template>
   <div :class="loaderClassName">
-    <svg :class="`${loaderClassName}__icon`" height="200" width="200">
-      <circle cx="100" cy="100" r="50"></circle>
+    <svg :class="`${loaderClassName}__icon`" height="100" width="100">
+      <circle cx="50" cy="50" r="25"></circle>
     </svg>
   </div>
 </template>
@@ -12,7 +12,7 @@ const loaderClassName = "loader";
 
 <style scoped lang="scss">
 .loader {
-  --radius: 50;
+  --radius: 25;
   --PI: 3.14159265358979;
   --circumference: calc(var(--PI) * var(--radius) * 1px);
 
