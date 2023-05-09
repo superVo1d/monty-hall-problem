@@ -60,6 +60,7 @@ const classNames = computed(() => [
 
     &:first-child {
       min-height: 80vh;
+      overflow: hidden;
     }
 
     &:last-child {

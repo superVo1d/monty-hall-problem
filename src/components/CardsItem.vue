@@ -1,15 +1,21 @@
 <template>
   <div :class="classes" @click="props.onClick">
     <div :class="`${cardsItemClassName}__inner`">
-      <parallax-item :active="!props.active">
-        <div :class="`${cardsItemClassName}__content`">
-          <div :class="`${cardsItemClassName}__text`">
-            <span>?</span>
+      <div :class="`${cardsItemClassName}__parallax-item-wrapper`">
+        <parallax-item :active="!props.active">
+          <div :class="`${cardsItemClassName}__content`">
+            <div :class="`${cardsItemClassName}__text`">
+              <span>?</span>
+            </div>
           </div>
-        </div>
-      </parallax-item>
+        </parallax-item>
+      </div>
+      <Loader
+        v-show="props.active && !injectedModels.isLoaded.value"
+        :class="`${cardsItemClassName}__loader`"
+      />
       <scene
-        v-if="props.active"
+        :visible="props.active"
         :class="`${cardsItemClassName}__scene`"
         :type="props.prize ? SceneType.car : SceneType.goat"
       />
@@ -18,12 +24,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import Scene from "@/components/Scene.vue";
-import { SceneType } from "@/types";
-import ParallaxItem from "@/wrappers/ParallaxWrapper.vue";
+import { ModelProviderInjectionInterface, SceneType } from "@/types";
+import ParallaxItem from "@/components/wrappers/ParallaxWrapper.vue";
+import Loader from "@/components/Loader.vue";
+import { modelInjectionKey } from "@/components/providers/injectionKeys";
 
 const cardsItemClassName = "cards-item";
+
+const injectedModels = inject(
+  modelInjectionKey
+) as ModelProviderInjectionInterface;
 
 interface CardsItemInterface {
   active: boolean;
@@ -81,6 +93,12 @@ const classes = computed(() => [
     transition: transform 0.6s ease, opacity 0.6s ease;
   }
 
+  &__parallax-item-wrapper {
+    transition: transform 0.6s ease;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+
   &__text {
     color: colors.$spring-bud;
     font-size: 13vw;
@@ -95,6 +113,11 @@ const classes = computed(() => [
     justify-content: center;
     align-items: center;
     z-index: 1;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      font-size: 22vw;
+      line-height: 22vw;
+    }
   }
 
   &__scene {
@@ -106,8 +129,11 @@ const classes = computed(() => [
   }
 
   &_active {
+    #{$selector}__parallax-item-wrapper {
+      transform: perspective(1000px) rotateY(360deg);
+    }
+
     #{$selector}__content {
-      transform: rotateY(360deg);
       opacity: 0;
       border: none;
       box-shadow: none;
@@ -123,12 +149,10 @@ const classes = computed(() => [
     }
   }
 
-  &_picked {
-    #{$selector}__content {
-      border-color: transparent;
-      outline: max(0.5vw, 5px) solid colors.$spring-bud;
-      width: 100%;
-    }
+  &_picked #{$selector}__content {
+    border-color: transparent;
+    outline: max(0.5vw, 5px) solid colors.$spring-bud;
+    width: 100%;
   }
 }
 </style>

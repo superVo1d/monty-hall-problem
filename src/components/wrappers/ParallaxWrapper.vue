@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
-import { MotionProperties, MotionVariants, useMotion } from "@vueuse/motion";
+import { MotionProperties, useMotion } from "@vueuse/motion";
 
 interface ParallaxWrapperInterface {
   active?: boolean;

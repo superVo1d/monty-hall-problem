@@ -4,13 +4,13 @@ import { ref } from "vue";
 import { MaybeRef } from "@/types";
 
 export const useCanvasResizer = (args: {
-  camera: MaybeRef<PerspectiveCamera>;
+  camera: MaybeRef<PerspectiveCamera | null>;
   container?: MaybeRef<HTMLDivElement>;
   onResize?: () => void;
   renderer: MaybeRef<WebGLRenderer>;
 }) => {
   const container = ref<MaybeRef<HTMLDivElement>>(args.container);
-  const camera = ref<MaybeRef<PerspectiveCamera>>(args.camera);
+  const camera = ref<MaybeRef<PerspectiveCamera | null>>(args.camera);
   const renderer = ref<MaybeRef<WebGLRenderer>>(args.renderer);
 
   const setSize = () => {
