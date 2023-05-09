@@ -70,10 +70,10 @@ useCanvasResizer({
   renderer,
 });
 
-const clock = new Clock();
+const clock = ref<Clock>();
 
 const animationCallback = () => {
-  const delta = clock.getDelta() || 0;
+  const delta = clock.value?.getDelta() || 0;
   mixer?.value?.update(delta);
 
   TWEEN.update();
@@ -153,6 +153,8 @@ const addModel = () => {
   gltf.animations.forEach((clip) => {
     mixer.value?.clipAction(clip).play();
   });
+
+  clock.value = new Clock();
 
   animateAppearance();
   startAnimation({

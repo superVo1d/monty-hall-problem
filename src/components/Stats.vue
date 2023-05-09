@@ -42,7 +42,7 @@ const statsData = computed(() => [
   font-size: 3.6rem;
   line-height: 4rem;
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     font-size: 2.4rem;
     line-height: 3rem;
   }

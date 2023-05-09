@@ -68,7 +68,7 @@ const classes = computed(() => [
   max-width: calc(25% - 3rem);
   perspective: 300rem;
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     max-width: unset;
   }
 
@@ -115,7 +115,7 @@ const classes = computed(() => [
     user-select: none;
     z-index: 1;
 
-    @media (max-width: breakpoints.$breakpoint-sm) {
+    @media (max-width: breakpoints.$mobile) {
       font-size: 22vw;
       line-height: 22vw;
     }

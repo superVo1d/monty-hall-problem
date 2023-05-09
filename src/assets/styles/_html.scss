@@ -23,7 +23,7 @@ body {
   overflow-x: hidden;
   padding-right: var(--padding-right);
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     font-size: 1.8rem;
     line-height: 2.1rem;
   }
@@ -35,7 +35,7 @@ h1 {
   font-weight: 900;
   margin-bottom: 0.8rem;
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     font-size: 3.2rem;
     line-height: 4rem;
   }

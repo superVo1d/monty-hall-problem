@@ -57,7 +57,7 @@ const logs = computed(() => {
   line-height: 4rem;
   font-weight: 700;
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     font-size: 2.4rem;
     line-height: 3rem;
   }

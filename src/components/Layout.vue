@@ -50,7 +50,7 @@ const classNames = computed(() => [
   transition: background 0.6s ease;
   width: 100%;
 
-  @media (max-width: breakpoints.$breakpoint-sm) {
+  @media (max-width: breakpoints.$mobile) {
     display: block;
   }
 
@@ -69,7 +69,7 @@ const classNames = computed(() => [
       flex-direction: column;
       justify-content: space-between;
 
-      @media (max-width: breakpoints.$breakpoint-sm) {
+      @media (max-width: breakpoints.$mobile) {
         border-left: none;
         border-top: 1px solid #000;
       }
