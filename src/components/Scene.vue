@@ -197,6 +197,8 @@ onMounted(() => {
 watch(
   () => injectedModels.isLoaded.value,
   () => {
+    clearScene();
+
     if (injectedModels?.isLoaded.value && props.visible) {
       addModel();
     }
@@ -219,7 +221,7 @@ watch(
     console.log("Clearing scene.");
     clearScene();
 
-    if (props.visible) {
+    if (injectedModels?.isLoaded.value && props.visible) {
       addModel();
     }
   }
