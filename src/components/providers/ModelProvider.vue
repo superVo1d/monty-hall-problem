@@ -30,13 +30,11 @@ onMounted(() => {
     isLoaded.value = true;
   };
 
-  setTimeout(() => {
-    Object.keys(modelPaths).forEach((modelType) => {
-      loader.load(modelPaths[modelType], (gltf) => {
-        models.value[modelType] = gltf;
-      });
+  Object.keys(modelPaths).forEach((modelType) => {
+    loader.load(modelPaths[modelType], (gltf) => {
+      models.value[modelType] = gltf;
     });
-  }, 100000);
+  });
 });
 
 provide<ModelProviderInjectionInterface>(modelInjectionKey, {
