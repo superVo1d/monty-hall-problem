@@ -190,7 +190,7 @@ const init = () => {
   // controls.value.update();
 };
 
-onMounted(() => setTimeout(() => init(), 50));
+onMounted(() => init());
 
 watch(
   () => injectedModels.isLoaded.value,
